@@ -1,0 +1,26 @@
+spring:
+  profiles:
+    active: dev
+    #接口返回对象中的日期格式化
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  resources:
+    #前端访问的静态文件路径中加了一级static目录，所以这边不能用默认的static目录
+    static-locations: classpath:/
+    chain:
+      strategy:
+        content:
+          paths: /**
+          enabled: true
+
+#分页配置
+pagehelper:
+  supportMethodsArguments: true
+  reasonable: true
+  helperDialect: mysql
+  params: count=countSql
+
+#引入日志文件
+logging:
+  config: classpath:config/logback-spring.xml
